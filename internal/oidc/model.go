@@ -1,11 +1,16 @@
 package oidc
 
+import "github.com/golang-jwt/jwt/v5"
+
 // XLoginClaims describes the expected claims in validated tokens.
 type XLoginClaims struct {
-    Subject string   `json:"sub"`
-    Issuer  string   `json:"iss"`
-    Audience string  `json:"aud"`
-    Groups  []string `json:"groups"`
-    Tenant  string   `json:"tenant"`
-    Env     string   `json:"env"`
+	Sub    string   `json:"sub"`
+	Email  string   `json:"email,omitempty"`
+	Groups []string `json:"groups,omitempty"`
+	Tenant string   `json:"tenant,omitempty"`
+	Env    string   `json:"env,omitempty"`
+	Scope  string   `json:"scope,omitempty"`
+
+	RawToken string `json:"-"` // raw JWT for downstream STS/Federation flows
+	jwt.RegisteredClaims
 }
