@@ -1,28 +1,30 @@
 rules:
-  - name: admin-all-clouds
-    match:
-      groups: ["admin"]
-    grants:
-      - provider: aws
-        account: "111111111111"
-        role: XLoginAdmin
-      - provider: gcp
-        project: xlogin-admin
-        role: roles/owner
-      - provider: azure
-        subscription: "00000000-0000-0000-0000-000000000000"
-        role: Owner
-      - provider: alicloud
-        account: "1234567890123456"
-        role: Admin
-  - name: tenant-operator
-    match:
-      groups: ["tenant-ops"]
-      env: ["dev", "staging"]
-    grants:
-      - provider: aws
-        account: "222222222222"
-        role: XLoginTenantOps
-      - provider: gcp
-        project: xlogin-tenant
-        role: roles/editor
+  - id: aws-admin-prod
+    when:
+      groups: ["cn-admin"]
+      env: ["prod"]
+    allow:
+      provider: "aws"
+      accounts: ["123456789012"]
+      roles:
+        - key: "admin"
+          iamRoleName: "xlogin-admin"
+  - id: aws-readonly-all
+    when:
+      groups: ["cn-observer"]
+    allow:
+      provider: "aws"
+      accounts: ["*"]
+      roles:
+        - key: "readonly"
+          iamRoleName: "xlogin-readonly"
+  - id: gcp-dev
+    when:
+      groups: ["cn-dev"]
+      env: ["dev"]
+    allow:
+      provider: "gcp"
+      projects: ["my-dev-project"]
+      roles:
+        - key: "editor"
+          role: "editor"
