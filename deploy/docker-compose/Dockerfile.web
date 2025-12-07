@@ -1,0 +1,6 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY web/package.json web/next.config.mjs web/app web/src ./
+RUN npm install || true
+EXPOSE 3000
+CMD ["npm", "run", "dev"]

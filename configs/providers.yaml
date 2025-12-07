@@ -1,0 +1,11 @@
+providers:
+  aws:
+    region: us-east-1
+    oidc_provider_arn: arn:aws:iam::111111111111:oidc-provider/auth.svc.plus
+  gcp:
+    workforce_pool_id: workforcePools/xlogin
+  azure:
+    tenant_id: 00000000-0000-0000-0000-000000000000
+  alicloud:
+    region: cn-hangzhou
+    ram_provider_arn: acs:ram::1234567890123456:oidc-provider/auth.svc.plus

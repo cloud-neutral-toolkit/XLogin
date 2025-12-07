@@ -1,0 +1,5 @@
+name: 'XLogin Docker Builder'
+description: 'Builds XLogin API and web images using Dockerfile'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

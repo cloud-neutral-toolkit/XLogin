@@ -1,0 +1,5 @@
+apiVersion: v2
+name: xlogin
+version: 0.1.0
+description: Helm chart for XLogin portal
+appVersion: "0.1.0"

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xlogin
+spec:
+  selector:
+    matchLabels:
+      app: xlogin
+  template:
+    metadata:
+      labels:
+        app: xlogin
+    spec:
+      containers:
+        - name: api
+          image: {{ .Values.image.api }}
+          ports:
+            - containerPort: {{ .Values.service.apiPort }}
+        - name: web
+          image: {{ .Values.image.web }}
+          ports:
+            - containerPort: {{ .Values.service.webPort }}

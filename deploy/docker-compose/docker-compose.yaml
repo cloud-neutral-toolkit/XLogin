@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  xlogin-api:
+    build:
+      context: ../..
+      dockerfile: deploy/docker-compose/Dockerfile.api
+    ports:
+      - "8080:8080"
+  xlogin-web:
+    build:
+      context: ../..
+      dockerfile: deploy/docker-compose/Dockerfile.web
+    ports:
+      - "3000:3000"

@@ -1,0 +1,6 @@
+image:
+  api: ghcr.io/example/xlogin-api:latest
+  web: ghcr.io/example/xlogin-web:latest
+service:
+  apiPort: 8080
+  webPort: 3000

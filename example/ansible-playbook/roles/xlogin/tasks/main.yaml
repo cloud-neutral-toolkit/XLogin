@@ -1,0 +1,4 @@
+---
+- name: Placeholder task
+  debug:
+    msg: "Deploy xlogin container stack"
