@@ -1,0 +1,6 @@
+FROM golang:1.21-alpine
+WORKDIR /app
+COPY cmd/xlogin-api ./cmd/xlogin-api
+RUN cd cmd/xlogin-api && go mod init xlogin-api && go mod tidy || true
+WORKDIR /app/cmd/xlogin-api
+CMD ["go", "run", "."]

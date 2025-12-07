@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xlogin
+spec:
+  selector:
+    matchLabels:
+      app: xlogin
+  template:
+    metadata:
+      labels:
+        app: xlogin
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/example/xlogin-api:latest
+          ports:
+            - containerPort: 8080
+        - name: web
+          image: ghcr.io/example/xlogin-web:latest
+          ports:
+            - containerPort: 3000

@@ -1,0 +1,28 @@
+rules:
+  - name: admin-all-clouds
+    match:
+      groups: ["admin"]
+    grants:
+      - provider: aws
+        account: "111111111111"
+        role: XLoginAdmin
+      - provider: gcp
+        project: xlogin-admin
+        role: roles/owner
+      - provider: azure
+        subscription: "00000000-0000-0000-0000-000000000000"
+        role: Owner
+      - provider: alicloud
+        account: "1234567890123456"
+        role: Admin
+  - name: tenant-operator
+    match:
+      groups: ["tenant-ops"]
+      env: ["dev", "staging"]
+    grants:
+      - provider: aws
+        account: "222222222222"
+        role: XLoginTenantOps
+      - provider: gcp
+        project: xlogin-tenant
+        role: roles/editor

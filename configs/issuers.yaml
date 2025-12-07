@@ -1,0 +1,9 @@
+issuers:
+  - name: auth-svc-plus
+    issuer: https://auth.svc.plus
+    audience: xlogin
+    jwks_url: https://auth.svc.plus/.well-known/jwks.json
+  - name: example-keycloak
+    issuer: https://idp.example.com/realms/xlogin
+    audience: xlogin
+    jwks_url: https://idp.example.com/realms/xlogin/protocol/openid-connect/certs
